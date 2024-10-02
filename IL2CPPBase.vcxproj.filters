@@ -24,7 +24,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IL2CPPTypes.h">
+    <ClInclude Include="IL2CPPTypes.hpp">
       <Filter>Source Files\il2cpp</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IL2CPP.h">
+    <ClCompile Include="IL2CPP.hpp">
       <Filter>Source Files\il2cpp</Filter>
     </ClCompile>
   </ItemGroup>

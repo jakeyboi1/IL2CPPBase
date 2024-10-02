@@ -2,7 +2,7 @@
 #include <string>
 #include <Windows.h>
 #include <iostream>
-#include "IL2CPP.h"
+#include "IL2CPP.hpp"
 using namespace std;
 
 void Init() {

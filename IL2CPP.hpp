@@ -3,7 +3,7 @@
 #include <string>
 #include <Windows.h>
 #include <iostream>
-#include "IL2CPPTypes.h"
+#include "IL2CPPTypes.hpp"
 using namespace std;
 // Include this folder from the game engine (Yes you do need to download the unity engine, also the 2021.3.5f1 will change depending on the version you use) in your project : C:\Program Files\Unity\Hub\Editor\2021.3.5f1\Editor\Data\il2cpp\libil2cpp
 // make sure to use C++ 20 or higher
