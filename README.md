@@ -2,7 +2,7 @@
 > IL2CPPBase is a Visual Studio project that serves as a base for modding IL2CPP Unity games. It provides an efficient and developer-friendly way to interact with Unity games by using `GetProcAddress` on exported Unity IL2CPP functions to then call game functions.
 
 ## Features
-- **Dynamic Function Access:** Utilizes `GetProcAddress` to call IL2CPP game functions, providing dynamic function calling.
+- **Dynamic Function Access:** Utilizes `GetProcAddress` to call IL2CPP functions, providing dynamic function calling.
 - **Simple API:** Includes an easy-to-use class, to streamline the modding process.
 - **Developer Experience:** Aims to enhance the ease of development for working on IL2CPP games.
 
