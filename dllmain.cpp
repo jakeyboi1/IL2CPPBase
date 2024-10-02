@@ -4,6 +4,7 @@
 #include <iostream>
 #include "IL2CPP.h"
 using namespace std;
+
 void Init() {
     // Initilizing our class
     IL2CPPBaseClass IL2CPPBase;
