@@ -141,9 +141,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseTypes.hpp" />
+    <ClInclude Include="Camera.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="IL2CPPTypes.hpp" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="UnityEngine.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />

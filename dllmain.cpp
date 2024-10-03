@@ -1,14 +1,24 @@
 #include "pch.h"
+#include <cstdlib> // For system()
 #include <string>
 #include <Windows.h>
 #include <iostream>
 #include "IL2CPP.hpp"
+
+// remade unity classes includes
+#include "BaseTypes.hpp"
+#include "UnityEngine.hpp"
+#include "Camera.hpp"
+
 using namespace std;
+using namespace Unity;
 
 void Init() {
-    // Initilizing our class
+    // Initilizing our class il2cpp base class and our unity engine class to use the rebuilt unity engine classes
     IL2CPPBaseClass IL2CPPBase;
     IL2CPPBase.Init();
+    UnityEngine unityEngine;
+    unityEngine.InitUnityClasses(IL2CPPBase); // Must be called before using any functions inside of this class
 
     // Allocate a console for debugging output
     AllocConsole();
@@ -17,48 +27,10 @@ void Init() {
     freopen_s(&console, "CONIN$", "r", stdin); // Redirect stdin to console
     cout.clear(); // Clear the output stream
 
-    Il2CppClass* cameraClass = IL2CPPBase.GetClassByName("UnityEngine", "Camera");
-    if (!cameraClass) {
-        printf("Camera class not found.");
-        return;
-    }
-    MethodInfo* getMainCamera = IL2CPPBase.GetMethodFromClass(cameraClass, "get_main", 0);
-    if (!getMainCamera) {
-        printf("get_main method not found.");
-        return;
-    }
-    Il2CppException* exception = nullptr;
-    Il2CppObject* mainCamera = IL2CPPBase.CallMethod(getMainCamera, nullptr, nullptr);
-
-    if (exception) {
-        printf("Exception occurred while getting main camera.");
-        return;
-    }
-
-    if (!mainCamera) {
-        printf("Main camera is null.");
-        return;
-    }
-    MethodInfo* setFOVMethod = IL2CPPBase.GetMethodFromClass(cameraClass, "set_fieldOfView", 1);
-    if (!setFOVMethod) {
-        printf("set_fieldOfView method not found.");
-        return;
-    }
     while (true) {
         Sleep(10);
-        // Set a new field of view
-        float newFOV = 90.0f;
-        void* args[1];
-        args[0] = &newFOV;
-
-        IL2CPPBase.CallMethod(setFOVMethod, mainCamera, args);
-
-        if (exception) {
-            printf("Exception occurred while setting field of view.");
-        }
-        else {
-            printf("FOV Set");
-        }
+        //unityEngine.Camera.SetFOV(mainCamera, 90.f);
+        Il2CppObject* mainCamera = unityEngine.Camera.GetMain();
     }
 }
 
