@@ -37,7 +37,7 @@
       <Filter>Source Files\UnityBaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="BaseTypes.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\UnityBaseClasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,10 @@ public:
         object_unbox = reinterpret_cast<object_unbox_t>(GetProcAddress(asmMod, "il2cpp_object_unbox"));
         runtime_object_init = reinterpret_cast<runtime_object_init_t>(GetProcAddress(asmMod, "il2cpp_runtime_object_init"));
         class_get_fields = reinterpret_cast<class_get_fields_t>(GetProcAddress(asmMod, "il2cpp_class_get_fields"));
+        image_get_class_count = reinterpret_cast<image_get_class_count_t>(GetProcAddress(asmMod, "il2cpp_image_get_class_count"));
+        image_get_class = reinterpret_cast<image_get_class_t>(GetProcAddress(asmMod, "il2cpp_image_get_class"));
+        class_get_name = reinterpret_cast<class_get_name_t>(GetProcAddress(asmMod, "il2cpp_class_get_name"));
+        class_get_namespace = reinterpret_cast<class_get_namespace_t>(GetProcAddress(asmMod, "il2cpp_class_get_namespace"));
 
         domain = domain_get(); // Get the current IL2CPP domain
         thread_attach(domain); // Attach the current thread to the IL2CPP domain
@@ -77,5 +81,31 @@ public:
 
     auto CallMethod(MethodInfo* method, Il2CppObject* object, void** args) {
         return runtime_invoke(method, object, args, nullptr);
+    }
+
+    // Functions to help reverse engineer obfuscated or encrypted IL2CPP games
+    void PrintAllClasses() {
+        // Get assemblies
+        size_t assemblyCount;
+        const Il2CppAssembly** assemblies = domain_get_assemblies(domain, &assemblyCount);
+
+        // Loop through each assembly
+        for (size_t i = 0; i < assemblyCount; i++) {
+            // Get the image from the assembly
+            const Il2CppImage* image = domain_assembly_open(domain, assemblies[i]->aname.name)->image;
+
+            // Get the number of classes in the image
+            size_t classCount = image_get_class_count(image);
+
+            // Loop through each class
+            for (size_t j = 0; j < classCount; j++) {
+                const Il2CppClass* klass = image_get_class(image, j);
+
+                // print the classes name and namespace
+                const char* className = class_get_name((Il2CppClass*)klass);
+                const char* namespaceName = class_get_namespace((Il2CppClass*)klass);
+                printf("Class: %s, Namespace: %s\n", className, namespaceName);
+            }
+        }
     }
 };

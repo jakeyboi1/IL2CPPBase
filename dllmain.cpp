@@ -1,5 +1,4 @@
 #include "pch.h"
-#include <cstdlib> // For system()
 #include <string>
 #include <Windows.h>
 #include <iostream>
@@ -27,10 +26,12 @@ void Init() {
     freopen_s(&console, "CONIN$", "r", stdin); // Redirect stdin to console
     cout.clear(); // Clear the output stream
 
+    IL2CPPBase.PrintAllClasses();
+
     while (true) {
         Sleep(10);
         //unityEngine.Camera.SetFOV(mainCamera, 90.f);
-        Il2CppObject* mainCamera = unityEngine.Camera.GetMain();
+        //Il2CppObject* mainCamera = unityEngine.Camera.GetMain();
     }
 }
 

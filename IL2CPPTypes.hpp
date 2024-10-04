@@ -38,6 +38,10 @@ typedef Il2CppObject* (*object_new_t)(Il2CppClass* klass);
 typedef void* (*object_unbox_t)(Il2CppObject* obj);
 typedef void (*runtime_object_init_t)(Il2CppObject* obj);
 typedef FieldInfo* (*class_get_fields_t)(Il2CppClass* klass, void** iter);
+typedef size_t (*image_get_class_count_t)(const Il2CppImage* image);
+typedef const Il2CppClass* (*image_get_class_t)(const Il2CppImage* image, size_t index);
+typedef const char* (*class_get_name_t)(Il2CppClass* klass);
+typedef const char* (*class_get_namespace_t)(Il2CppClass* klass);
 
 // Inline declarations of the function pointers to avoid multiple definitions
 inline domain_get_t domain_get; // Pointer to get the current domain
@@ -62,4 +66,8 @@ inline object_new_t object_new;
 inline object_unbox_t object_unbox;
 inline runtime_object_init_t runtime_object_init;
 inline class_get_fields_t class_get_fields;
+inline image_get_class_count_t image_get_class_count;
+inline image_get_class_t image_get_class;
+inline class_get_name_t class_get_name;
+inline class_get_namespace_t class_get_namespace;
 #endif
