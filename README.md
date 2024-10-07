@@ -18,7 +18,6 @@ Contributions are welcome! If you'd like to contribute, feel free to fork the re
 
 ## TODO
 - Investigate a way to avoid needing to import headers from the Unity Engine.
-- Rename the Il2CPPTypes.h and IL2CPP.h to .hpp to standardize it to C++
 - Rebuild the base Unity classes like UnityEngine to allow for easier use instead of getting each function and class individually. (This obviously will only apply to base unity functions as each game has their own classes)
 - Investigate building a .exe that will inject every .dll inside of a folder named IL2CPPMods in a games base directory to essentially build a mod loader that injects .dll files built with this base.
 
