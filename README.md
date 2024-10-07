@@ -8,6 +8,7 @@
 
 ## Installation
 - Download the code zip, and run the projects .sln file
+- Make sure you download the Unity Engine, and change the include directory to match your install
 - Build the project and then use a software like ProcessHacker to inject the built .dll
 
 ## Example Usage
