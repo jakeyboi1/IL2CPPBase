@@ -3,21 +3,12 @@
 #include <Windows.h>
 #include <iostream>
 #include "IL2CPP.hpp"
-
-// remade unity classes includes
-#include "BaseTypes.hpp"
-#include "UnityEngine.hpp"
-#include "Camera.hpp"
-
 using namespace std;
-using namespace Unity;
 
 void Init() {
-    // Initilizing our class il2cpp base class and our unity engine class to use the rebuilt unity engine classes
+    // Initilizing our class il2cpp base class
     IL2CPPBaseClass IL2CPPBase;
     IL2CPPBase.Init();
-    UnityEngine unityEngine;
-    unityEngine.InitUnityClasses(IL2CPPBase); // Must be called before using any functions inside of this class
 
     // Allocate a console for debugging output
     AllocConsole();
@@ -26,12 +17,26 @@ void Init() {
     freopen_s(&console, "CONIN$", "r", stdin); // Redirect stdin to console
     cout.clear(); // Clear the output stream
 
-    IL2CPPBase.PrintAllClasses();
+    Il2CppClass* camClass = IL2CPPBase.GetClassByName("UnityEngine", "Camera");
+    MethodInfo* getMainCamera = IL2CPPBase.GetMethodFromClass(camClass, "get_main", 0);
+    Il2CppException* exception = nullptr;
+    Il2CppObject* mainCamera = IL2CPPBase.CallMethod(getMainCamera, nullptr, nullptr);
+    MethodInfo* setFOVMethod = IL2CPPBase.GetMethodFromClass(camClass, "set_fieldOfView", 1);
+
+    //IL2CPPBase.PrintAllClasses();
 
     while (true) {
         Sleep(10);
-        //unityEngine.Camera.SetFOV(mainCamera, 90.f);
-        //Il2CppObject* mainCamera = unityEngine.Camera.GetMain();
+        float newFOV = 90.0f;
+        void* args[1];
+        args[0] = &newFOV;
+        IL2CPPBase.CallMethod(setFOVMethod, mainCamera, args);
+        if (exception) {
+            printf("Exception occurred while setting field of view.");
+        }
+        else {
+            printf("FOV Set");
+        }
     }
 }
 

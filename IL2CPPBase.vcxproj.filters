@@ -16,9 +16,6 @@
     <Filter Include="Source Files\il2cpp">
       <UniqueIdentifier>{37f9a4e0-3461-4676-aa36-2ccffffe786b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UnityBaseClasses">
-      <UniqueIdentifier>{ce52304b-51f0-49ef-81cc-9f9316776401}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -29,15 +26,6 @@
     </ClInclude>
     <ClInclude Include="IL2CPPTypes.hpp">
       <Filter>Source Files\il2cpp</Filter>
-    </ClInclude>
-    <ClInclude Include="UnityEngine.hpp">
-      <Filter>Source Files\UnityBaseClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.hpp">
-      <Filter>Source Files\UnityBaseClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseTypes.hpp">
-      <Filter>Source Files\UnityBaseClasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
